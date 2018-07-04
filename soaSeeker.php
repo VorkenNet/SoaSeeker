@@ -16,10 +16,12 @@ function parseHost($host){
   $vhost["domain"]=getMyDomain($host);
   $vhost["ip"]=getIP($host);
   $vhost["soa"]=getSOA($vhost["domain"]);
+  $vhost["ttl"]=getTTL($vhost["domain"]);
   //echo $vhost["fqdn"]."\t".$vhost["domain"]."\t".$vhost["ip"]."\t".$vhost["soa"]."\n";
-  echo "|".$vhost["fqdn"]."|".$vhost["domain"]."|".$vhost["ip"]."|".$vhost["soa"]."|\n";
-  //echo $vhost["fqdn"].",".$vhost["domain"].",".$vhost["ip"].",".$vhost["soa"]."\n";
-
+  //echo "|".$vhost["fqdn"]."|".$vhost["domain"]."|".$vhost["ip"]."|".$vhost["soa"]."|\n";
+  //echo $vhost["fqdn"].",".$vhost["domain"].",".$vhost["ip"].",".$vhost["soa"].",".$vhost["ttl"]."\n";
+  $output=implode(",",$vhost);
+  echo $output."\n";
   return $vhost;
 }
 
@@ -56,8 +58,14 @@ function getSOA($domain){
   } else return "SOA_NOFOUND";
 }
 
-
-
+function getTTL($domain){
+  exec("dig soa +noall +answer ".$domain, $output);
+  if (count($output)){
+      $answer=explode("SOA",$output[0]);
+      $soa=explode(" ",trim(end($answer)));
+      return trim(end($soa));
+  } else return "SOA_NOFOUND";
+}
 
 function getHostsFromFile($file){
   $Thisfile = fopen($file, 'r')or die('No open ups..');
@@ -79,9 +87,4 @@ function getHostsFromFile($file){
   }
   return $domanins;
 }
-
-
-
-
-
 ?>
