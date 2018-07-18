@@ -11,7 +11,7 @@ php soaSeekerDir.php path-to-file-conf-directory (csv|tab|wiki)
 
 **httpDigger.php**
 
-php httpDigger.php IP USRNAME PASSWOD (csv|tab|wiki) 
+php httpDigger.php Ip Usrname Password (csv|tab|wiki) 
 
 **Apache Reference**
 
