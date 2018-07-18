@@ -1,6 +1,20 @@
 <?php
 require_once("include/soaSeeker.inc.php");
-
+/*
+- Connect via SSh to a server
+- Download all Apache Conf File in a local directory
+- Parse all Configuration File and Display MyIp + soaSeekerFields + $documentRoot
+soaSeekerFields:
+ - fqdn
+ - domain
+ - ip
+ - soa
+ - ttl
+ Display tipes:
+ - csv
+ - tab
+ - wiki
+*/
 $ip=trim($argv[1]);
 $user=trim($argv[2]);
 $password=trim($argv[3]);
