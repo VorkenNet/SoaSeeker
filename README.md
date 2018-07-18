@@ -1,5 +1,5 @@
 # SoaSeeker
-Some easyScript to manage Httpd.conf, Vhosts, Dns and dead sites...
+Some easyScripts to manage Apache conf files and dead sites...
 
 **soaSeeker.php**
 
@@ -12,6 +12,10 @@ php soaSeekerDir.php path-to-file-conf-directory (csv|tab|wiki)
 **httpDigger.php**
 
 php httpDigger.php Ip Usrname Password (csv|tab|wiki) 
+
+**zombieSeeker.php**
+
+php zombieSeeker.php Ip Usrname Password (csv|tab|wiki) 
 
 **Apache Reference**
 
